@@ -1,0 +1,135 @@
+
+1) Difference between List and Tuple ?
+
+LIST
+* List is a Mutable object it can able to change after creation 
+* here we are using square brackets []
+* Lists are slightly slower than tuples
+* List have many imbuild method such as (append, extend, sort )
+
+TUPLE
+* Tuple is a Immutable object we cannot modify it after creation 
+* here we are using parentheses ()
+* Tuples are slightly faster than lists
+* tuple have few imbuild method such as (index , count)
+
+List methods?
+lst = [3, 1, 2]
+lst.append(4)        # [3, 1, 2, 4]
+lst.extend([5, 6])   # [3, 1, 2, 4, 5, 6]
+lst.insert(0, 9)     # [9, 3, 1, 2, 4, 5, 6]
+lst.remove(3)        # [9, 1, 2, 4, 5, 6]
+item = lst.pop()     # item = 6, lst = [9, 1, 2, 4, 5]
+lst.sort()           # [1, 2, 4, 5, 9]
+lst.reverse()        # [9, 5, 4, 2, 1]
+new = lst.copy()     # new = [9, 5, 4, 2, 1]
+
+2) Difference between Dictionary and Set ?
+
+DICTNORY
+* key should be uinque
+* it is working like Hashing
+* syntax key colon value inside the curly braces
+
+SET
+* Set is a unorder collection
+* All value should be uinque
+* here also using curly braces
+
+
+3) What are the Difference between == , is operator and in operator?
+
+* "==" if check both value are equal.
+* "is" if check both variable are located in same memory.
+* "in" if check wheather a value exisit is inside the sequence of collection.
+
+
+4)What is the difference between Flask, Django, and FastAPI?
+
+* Django is a full-stack, batteries-included web framework, meaning it provides everything
+out of the box such as ORM, authentication, admin panel, and templating. It is ideal for large, 
+database-driven applications that follow the MVC pattern.
+
+* Flask is a lightweight micro-framework, which provides only the core web routing features. 
+Developers add extensions manually based on project needs. It gives more flexibility and is suitable
+ for smaller services and APIs.
+
+* FastAPI is a modern, high-performance framework designed for building APIs, especially 
+asynchronous ones. It supports automatic validation and documentation using Pydantic and OpenAPI,
+ and is often faster than Flask and Django for API workloads.
+
+
+5)What is the perpose of Module and Package ?
+
+* Module is a single python file, improve readblity to share code accorss the project 
+* A package is a folder that contains multiple Module
+* A Library in python is a collection of module and package 
+
+7)How is memory managed in python ?
+
+Python manages memory automatically using a private heap space. All Python objects are stored in this heap,
+and memory allocation and deallocation are handled by the Python Memory Manager. 
+Python also uses reference counting to track how many references point to an object. 
+When an object’s reference count becomes zero, it becomes eligible for garbage collection, 
+which frees the unused memory. So overall, Python supports automatic memory allocation and garbage 
+collection.
+
+8) what is the decorator?
+
+A decorator in Python is a function that takes another function as input and adds extra functionality 
+to it without modifying the original function’s code. Decorators are commonly used for cross-cutting 
+concerns like logging, authentication, caching, and performance measurement.
+
+9) what is the generator?
+
+A generator in Python is a special type of function that returns values one at a time using the 
+yield keyword instead of returning them all at once. Generators do not store the entire sequence 
+in memory — they produce values lazily, only when needed — which makes them very memory-efficient for 
+working with large data.
+
+10) What is iter and what is an iterator in Python?
+
+In Python, an iterator is an object that allows you to traverse through elements of a 
+collection one at a time. An iterator must implement the __iter__() and __next__() methods.
+
+The built-in iter() function is used to convert an iterable (like a list, tuple, or string)
+into an iterator. Once you have an iterator, you can get the next value using the next() 
+function until a StopIteration exception is raised.
+
+11) what is Positional aurgument and keyword aurgument?
+
+Positional aurgument are passed to function in the correct order the posisition mater because the funciton 
+assign value based in where they appear
+
+keyword aurgument are passed by explicitly naming the parameter so order does not mater,
+ they also make code readablity  
+
+12) what is the perpose of the self keyword?
+SELF reperacent the instance of the class it is used to access instance variable and instance methods
+
+13) What are __new__ and __init__ in Python?
+
+__new__ is the method that create the object while __init__ the method that 
+initlized the object after it has been created.
+
+14)What is MRO (Method Resolution Order)?
+MRO is the order in which Python looks for a method or attribute when there are multiple inheritance classes.
+
+15)What is the GIL, and how does threading work in Python?
+
+GIL = Global interprenter lock, is a mutex in python that ensure only one thread execute 
+    python byte code at a time, it is simply memory management, but it also means cpu bound python code 
+    can't truly run in parallel across multiple cores using threads
+
+16)What is Multithreading?
+    one process (one program) with multiple threads inside It 
+    Multithreading means running multiple threads inside the same process, sharing the same memory. 
+    In Python it’s great for I/O-bound tasks, but CPU-bound code doesn’t gain real parallelism because of the GIL. 
+    Multiprocessing creates separate processes, each with its own memory and Python interpreter, so it allows true
+     parallel execution across CPU cores — making it better for CPU-bound workloads.
+
+17)Shallow Copy vs Deep Copy?
+    Shallow copy create a new object but it doesn't recusively copy the object inside it, it only copy the referance.
+    Deep copy creates a completely independent copy of the object and everthing inside it.
+
+

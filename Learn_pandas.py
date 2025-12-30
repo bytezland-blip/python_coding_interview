@@ -35,3 +35,9 @@ print(sorv)
 # execute n numer of 
 
 df.agg({'salary': 'mean', 'age': 'max'})
+
+#Remove duplicate
+
+df.duplicated(keep=False)
+df.duplicated(keep='last')
+df.duplicated(keep='frist')

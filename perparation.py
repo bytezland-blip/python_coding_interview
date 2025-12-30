@@ -535,7 +535,6 @@ def list_merge(inp_list):
 """
 Given a list of strings where each string contains a name followed by a number, sort the list based on the numeric value.
 # output : ['arun23', 'amul25', 'kala26', 'sam45']  
-
 """
 def spliting(inp):
     get_num = {}
@@ -582,14 +581,6 @@ def find_missing(arr):
             return arr[i] +1
 
 
-# arr = [30,31,32, 33,34, 36]
-# print(find_missing(arr))
-
-
-
-
-
-# Output: 5, nums = [0,1,2,3,4,_,_,_,_,_]
 def funcctions(numsu):
     var = []
     duplicate = []
@@ -605,3 +596,45 @@ def funcctions(numsu):
 
 # numsu =[1,1,2]
 # print(funcctions(numsu))
+
+"""
+Given a list of integers nums and an integer target, write a function that returns all pairs of numbers from the list whose sum is equal to target.
+
+Each pair should consist of two numbers from the list.
+
+A number cannot be used more than once at the same index.
+
+Return the pairs as a list of tuples.
+
+The order of pairs in the result does not matter.
+input : [2, 4, 3, 5, 7, 8, -1]
+output : [(2, 5), (4, 3), (8, -1)]
+"""
+
+def target_sum(num, target):
+    out = []
+    for i in range(0, len(num)):
+        for j in range(i + 1 , len(num)):
+            if (num[j]) + num[i] == target:
+                out.append((num[i], num[j]))
+    return out
+tar =7
+# nums_ss = [2, 4, 3, 5, 7, 8, -1]
+# print(target_sum(nums_ss, tar))
+
+"""
+if value is grater than 5 you can add else you can divide the both value using decorato"""
+
+def decorators(func):
+    def inner(*aurg, **kwaurg):
+        a, b = aurg
+        if b > a:
+            return a+b
+        return func(a,b)
+    return inner
+
+@decorators
+def main(a, b):
+    return a-b
+
+print(main(4,2))

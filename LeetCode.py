@@ -486,38 +486,60 @@ def longestpri():
 # longestpri()
 
 """
+Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0.
 
+Notice that the solution set must not contain duplicate triplets.
+
+ 
+
+Example 1:
+
+Input: nums = [-1,0,1,2,-1,-4]
+Output: [[-1,-1,2],[-1,0,1]]
+Explanation: 
+nums[0] + nums[1] + nums[2] = (-1) + 0 + 1 = 0.
+nums[1] + nums[2] + nums[4] = 0 + 1 + (-1) = 0.
+nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0.
+The distinct triplets are [-1,0,1] and [-1,-1,2].
+Notice that the order of the output and the order of the triplets does not matter.
 """
-
-   
-
-def three_sum(nums):
+def merging(nums):
     nums.sort()
-    res = []
-
+    out = []
+    
     for i in range(len(nums)):
+        
         if i > 0 and nums[i] == nums[i - 1]:
-            continue  # skip duplicates for i
-
+            continue
         left, right = i + 1, len(nums) - 1
 
         while left < right:
-            s = nums[i] + nums[left] + nums[right]
 
-            if s == 0:
-                res.append([nums[i], nums[left], nums[right]])
+            validate = nums[i] + nums[left] + nums[right]
 
-                # skip duplicates drastical changes
-                left += 1
-                while left < right and nums[left] == nums[left - 1]:
+            if validate == 0:
+                out.append([nums[i] , nums[left] , nums[right]])
+                left += 1 
+                while  left < right and nums[left] == nums[left] + 1:
                     left += 1
-
-            elif s < 0:
+                    
+            elif validate < 0:
                 left += 1
             else:
                 right -= 1
+            
+    def duplicate_removever(s): #input [[1,2,3],[-3, -2, 5], [1, 2,3], [-2, 0, 2]]
+        outs = []
+        seen = set()
+        for lsts in s:
+            t = tuple(lsts)
+            if t not in seen:
+                seen.add(t)
+                outs.append(lsts)
+        return outs  #output [[1, 2, 3],[-3, -2, 5], [-2, 0, 2]]
+    return duplicate_removever(out)
 
-    return res
-
-arr = [-1,0,1,2,-1,-4]
-three_sum(arr)
+            
+# nums = [2,-3,0,-2,-5,-5,-4,1,2,-2,2,0,2,-4,5,5,-10]
+# print(merging(nums) )
+   
