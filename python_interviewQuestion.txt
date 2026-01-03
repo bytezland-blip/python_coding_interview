@@ -133,3 +133,10 @@ GIL = Global interprenter lock, is a mutex in python that ensure only one thread
     Deep copy creates a completely independent copy of the object and everthing inside it.
 
 
+18) what is authentication and Authorization?
+    Authentication : 
+        it is the process of verifing a user identity (Who you are)
+    Authorization :
+        it is this process deceiding what an authenticated user is permitted to access (what are you allowed to do )
+
+19) 

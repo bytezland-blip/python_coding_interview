@@ -542,4 +542,200 @@ def merging(nums):
             
 # nums = [2,-3,0,-2,-5,-5,-4,1,2,-2,2,0,2,-4,5,5,-10]
 # print(merging(nums) )
-   
+"""
+Given an integer array nums of length n and an integer target, find three integers in nums such that the sum is closest to target.
+
+Return the sum of the three integers.
+
+You may assume that each input would have exactly one solution.
+
+ 
+
+Example 1:
+
+Input: nums = [-1,2,1,-4], target = 1
+Output: 2
+Explanation: The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).
+"""
+
+def calculating(n, target):
+    n.sort()
+    outs = []
+
+    for i in range(len(n)-2):
+        for j in range(i+1, len(n)-1):
+            for k in range(j+1, len(n)):
+                outs.append(n[i] + n[j] + n[k])
+
+    closest = outs[0]
+    for s in outs:
+        if abs(s - target) < abs(closest - target):
+            closest = s
+
+    return closest
+
+
+"""
+
+"""
+
+def letterCombinations(digits):
+    num_com = {
+        2 : ["a", "b", "c"], 3 : ["d", "e", "f"], 4:["g", "h", "i"],
+        5 : ["j", "k", "l"], 6 : ["m", "n", "o"], 7:["p", "q", "r", "s"],
+        8 : ["t", "u", "v"], 9 : ["w", "x", "y", "z"], 0 : " "
+    }
+    out = []
+    if len(digits) == 1:
+        return num_com.get(int(digits))
+    
+    if len(digits) == 2:
+        first_dig = num_com.get(int(digits[0]))
+        sec_dig = num_com.get(int(digits[-1]))
+        
+        for i in first_dig:
+            for j in sec_dig:
+                print(i+j)
+                out.append(i+j)
+        return out
+    if len(digits) == 3:
+        first_dig = num_com.get(int(digits[0]))
+        mid_dig = num_com.get(int(digits[1]))
+        last_dig = num_com.get(int(digits[2]))
+        
+        for i in first_dig:
+            for j in mid_dig:
+                for k in last_dig:
+                    out.append(i+j+k)
+        return out
+    
+    if len(digits) == 4:
+        first_dig = num_com.get(int(digits[0]))
+        mid_dig = num_com.get(int(digits[1]))
+        last_dig = num_com.get(int(digits[2]))
+        final = num_com.get(int(digits[3]))
+        
+        for i in first_dig:
+            for j in mid_dig:
+                for k in last_dig:
+                    for L in final:
+                        out.append(i+j+k+L)
+        return out
+  
+# print(letterCombinations("2"))
+
+def letterCombinations(digits):
+    if not digits:
+        return []
+
+    num_com = {
+        "2": "abc", "3": "def", "4": "ghi",
+        "5": "jkl", "6": "mno", "7": "pqrs",
+        "8": "tuv", "9": "wxyz"
+    }
+
+    result = []
+    def merge_both(i, path):
+        if i == len(digits):
+            result.append(path)
+            return
+        for dh in num_com[digits[i]]:
+            merge_both(i+1, path+dh)
+            
+    merge_both(0,"")
+    return result
+        
+# print(letterCombinations("23"))
+
+"""
+Given an array nums of n integers, return an array of all the unique quadruplets [nums[a], nums[b], nums[c], nums[d]] such that:
+
+0 <= a, b, c, d < n
+a, b, c, and d are distinct.
+nums[a] + nums[b] + nums[c] + nums[d] == target
+You may return the answer in any order.
+
+ 
+
+Example 1:
+
+Input: nums = [1,0,-1,0,-2,2], target = 0
+Output: [[-2,-1,1,2],[-2,0,0,2],[-1,0,0,1]]
+Example 2:
+
+Input: nums = [2,2,2,2,2], target = 8
+Output: [[2,2,2,2]]
+"""
+def permute(nums, target):
+    nums.sort()
+    n = len(nums)
+    res = []
+    
+    for i in range(n):
+        
+        for j in range(i+1, n):
+            
+            left, right = j+1, n-1
+            
+            while left < right:
+                
+                s = nums[i] + nums[j] + nums[left] + nums[right]
+                
+                if s == target:
+                    print(nums[i], nums[j], nums[left], nums[right])
+                    res.append([nums[i], nums[j], nums[left], nums[right]])
+
+                    left += 1
+                    right -= 1
+
+                elif s < target:
+                    left += 1
+                else:
+                    right -= 1
+    def remove_dupli(res):
+        out =[]
+        for i in range(len(res)):
+            if res[i] not in out:
+                out.append(res[i])
+        return out
+    return remove_dupli(res)
+                
+# nums = [-455,-408,-383,-374,-347,-344,-320,-319,-266,-252,-170,-120,-113,-104,-100,-81,-64,-48,-46,-44,-4,-1,26,28,30,62,69,84,100,119,126,134,144,145,170,179,230,246,264,269,272,289,294,323,328,331,335,336,370,370,388,394,397,400,427,431,452,483]
+# target = 5842
+# permute(nums, target)
+
+"""
+Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+An input string is valid if:
+Open brackets must be closed by the same type of brackets.
+Open brackets must be closed in the correct order.
+Every close bracket has a corresponding open bracket of the same type.
+
+Example 1:
+
+Input: s = "()"
+Output: true
+
+Example 2:
+
+Input: s = "()[]{}"
+Output: true
+"""
+def isValid(s):
+    stack = []
+    pairs = {')': '(', ']': '[', '}': '{'}   
+    sts = False     
+    if len(s) % 2 == 1:
+        return sts
+
+    for i in s:
+        if i in pairs.values():
+            stack.append(i)
+            sts = False
+        else:
+            if not stack or stack[-1] != pairs[i]:
+                sts = False
+                return sts
+            stack.pop()
+            sts = True
+    return True if len(stack) == 0  else False 

@@ -637,4 +637,30 @@ def decorators(func):
 def main(a, b):
     return a-b
 
-print(main(4,2))
+# print(main(4,2))
+
+"""
+Input: nums = [1,2,3]
+Output:
+[
+  [1,2,3],[1,3,2],[2,1,3],
+  [2,3,1],[3,1,2],[3,2,1]
+]
+"""
+def subsets(nums):
+    result = []
+
+    def backtrack(i, path):
+        result.append(path)
+        
+        for j in range(i, len(nums)):
+            
+            backtrack(j + 1, path + [nums[j]])
+            
+        
+
+    backtrack(0, [])
+    return result
+
+nums = [1,2,3]
+subsets(nums)
