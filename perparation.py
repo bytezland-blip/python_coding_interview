@@ -16,8 +16,8 @@ def transform_text(txt):
 
 # Example usage:
 # txt = "animals occupdi villages are very important for the ecosystem"
-# result = transform_text(txt)
-# print(result)
+# print(transform_text(txt))
+
 def Human(txt):
     vowel_map = {
             'a': 'i',
@@ -35,7 +35,6 @@ def Human(txt):
 # Human(txt)
 
 def buble_sort(lstt):
-    
     for i in range(0,len(lstt) -1):
         for j in range(0, len(lstt) -i - 1):
             if lstt[j] > lstt[j + 1]:
@@ -45,6 +44,23 @@ def buble_sort(lstt):
 # lstt = [12, 23, 1, 43, 21]
 # buble_sort(lstt)
 
+def quick_sort(arr):
+    
+    if len(arr) <= 1:
+        return arr
+    
+    pivote = arr[len(arr) // 2]
+    
+    left = [i for i in arr if i < pivote ]
+    middle = [i for i in arr if i == pivote]
+    right = [i for i in arr if i > pivote]
+    
+    return quick_sort(left) + middle + quick_sort(right)
+
+
+# data = [10, 7, 8, 9, 1, 5]
+# sorted_data = quick_sort(data)
+# print(sorted_data)
 
 # import re
 
@@ -513,7 +529,6 @@ def fibonaccii():
     while True:
         yield a
         a, b = b, a+b
-
 # fib = fibonaccii()
 # out = [next(fib) for _ in range(7)]
 # print(out)
@@ -662,5 +677,60 @@ def subsets(nums):
     backtrack(0, [])
     return result
 
-nums = [1,2,3]
-subsets(nums)
+# nums = [1,2,3]
+# subsets(nums)
+
+def amstrong(n):
+    nn = str(n)
+    count = 0
+    for i in range(len(nn)):
+        count += int(nn[i]) ** len(nn)
+    if count == n:
+        return "this is amstrong number"
+        
+    return "this is not a amstrong number"
+    
+# print(amstrong(153))
+
+# python abstraction
+from abc import ABC, abstractmethod
+
+class Payment(ABC):
+
+    @abstractmethod
+    def pay(self, amount):
+        pass
+
+class CreditCard(Payment):
+    def pay(self, amount):
+        return f"Paid {amount} using Credit Card"
+
+class UPI(Payment):
+    def pay(self, amount):
+        return f"Paid {amount} using UPI"
+
+def make_payment(payment: Payment):
+    return payment.pay(100)
+
+# print(make_payment(CreditCard()))
+# print(make_payment(UPI()))
+
+class User:
+   
+    def __init__(self):
+        self.default_age = User.default_age
+        
+    @classmethod
+    def add_user(cls, Def_Age : int):
+        cls.default_age = Def_Age
+
+    @staticmethod
+    def is_valid_age(age):
+        return age >= User.default_age
+    
+    def satic_fun(self):
+        return f"output is {self.default_age}"
+
+# print(f"--out1--{User.add_user(23)}")
+# print(f"--out--{User.is_valid_age(21)}")
+# print(f"--out3--{User().satic_fun()}")

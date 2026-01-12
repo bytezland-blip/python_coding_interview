@@ -561,7 +561,6 @@ Explanation: The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).
 def calculating(n, target):
     n.sort()
     outs = []
-
     for i in range(len(n)-2):
         for j in range(i+1, len(n)-1):
             for k in range(j+1, len(n)):
@@ -739,3 +738,48 @@ def isValid(s):
             stack.pop()
             sts = True
     return True if len(stack) == 0  else False 
+
+"""
+
+"""
+def parathis(s):
+
+    count = 0
+    for i in s:
+        if i[:2] == "()" and len(i) % 2 == 0:
+            k, sam = 0
+            
+            for j in range(2,len(i)+1, 2):
+               if i[k:j] == "()":
+                   sam += 1
+                   k = j
+                   continue
+               else:
+                   sam = 0
+                   break
+            count = sam
+    return count
+
+# print(parathis(["((()))", "(())", "()("]))
+
+def  generate_parathisis(n):
+    stt = "("
+    
+    """
+000111
+010101
+001011
+010011
+001101
+    """
+def generate(n, s="", zeros=0, ones=0):
+    n = 3
+    length = 2 * n
+
+    for x in range(2**length):
+        s = bin(x)[2:].zfill(length)
+        if s.count("1") == n:
+            print(s)
+
+
+generate(3)
