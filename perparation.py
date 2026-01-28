@@ -16,7 +16,7 @@ def transform_text(txt):
 
 # Example usage:
 # txt = "animals occupdi villages are very important for the ecosystem"
-# print(transform_text(txt))
+# print(transform_text(txt)) 
 
 def Human(txt):
     vowel_map = {
@@ -86,7 +86,7 @@ def sec_large():
         elif fir > i > sec:
             sec = i
     return sec
-
+sec_large()
 
 """
 Palindrome Check: Write a function is_palindrome(s) that returns True if string s reads
@@ -734,3 +734,28 @@ class User:
 # print(f"--out1--{User.add_user(23)}")
 # print(f"--out--{User.is_valid_age(21)}")
 # print(f"--out3--{User().satic_fun()}")
+
+
+"""
+
+"""
+        
+def replace_str(s, s1, s2):
+    out = ""
+    i = 0
+    while i < len(s):
+        if s[i:i+len(s1)] == s1:
+            out += s2
+            i += len(s1)
+        else:
+            out += s[i]
+            i += 1
+
+    print(out)
+
+
+s  = "abababa"
+s1 = "aba"
+s2 = "a"
+
+replace_str(s, s1, s2)
